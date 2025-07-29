@@ -1,0 +1,291 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nahid's Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar Section -->
+    <nav id="navbar" class="flex s-around bg-color">
+        <div class="left-nav">
+            <h2 class="t-white">Portfolio</h2>
+        </div>
+        <div class="right-nav">
+            <ul class="flex">
+                <li><a href="#home" class="t-white roboto">Home <i class="fa-solid fa-house"></i></a></li>
+                <li><a href="#about" class="t-white roboto">About Me <i class="fa-solid fa-user"></i></a></li>
+                <li><a href="#skills" class="t-white roboto">Skills <i class="fa-solid fa-code"></i></a></li>
+                <li><a href="#Projects" class="t-white roboto">Projects <i class="fas fa-project-diagram"></i></a></li>
+                <li><a href="#Contact" class="t-white roboto">Contact <i class="fa-solid fa-rocket"></i></a></li>
+            </ ogl>
+        </div>
+    </nav>
+
+    <!-- Django Messages -->
+    {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <div class="alert success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+        <script>
+        // Auto-hide after 5 seconds
+        setTimeout(function () {
+            const alerts = document.querySelectorAll('.alert');
+            alerts.forEach(function (alert) {
+                alert.style.transition = "opacity 0.5s ease-out";
+                alert.style.opacity = "0";
+                setTimeout(() => alert.remove(), 500); // Fully remove after fade out
+            });
+        }, 5000); // 5000ms = 5 seconds
+        </script>
+    {% endif %}
+
+    <!-- Home Section -->
+    <section id="home" class="flex s-around sw-80 m-auto">
+        <div class="home-left flex items-center">
+            <div class="home-content">
+                <h6 class="poppinss">Hi, I'm</h6>
+                <h1 class="t-white">Nahid Hasan Riad</h1>
+                <h4 class="poppinss">Python Developer</h4>
+                <a href="{% static 'pdf/Nahid_Hasan_Riad_Resume.pdf' %}" target="_blank">
+                    <button class="btn poppins">Resume</button></a>
+                <a class="btn live poppins" id="hireme" href="https://linkedin.com/in/nhriyaad" target="_blank">Let's Talk</a>
+            </div>
+        </div>
+        <div class="home-right flex s-center items-center">
+            <div class="circle flex s-center items-center" id="mainImage">
+                <img src="{% static 'images/mypic.png' %}" alt="">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h1 class="t-center my-2 t-white f-2">About Me</h1>
+        <div class="about-container flex s-around">
+            <div class="about-left flex s-center items-center">
+                <img src="{% static 'images/about.png' %}" alt="" style="width:60%; ">
+            </div>
+            <div class="about-right flex">
+                <div class="about-content">
+                    <!-- <h1 class="t-white m-b-1 poppins">Nahid Hasan Riad</h1> -->
+                    <p class="t-white poppins">Aspiring Python Developer with a background in IT support and a strong foundation in backend development using Django, FastAPI, and MySQL. Transitioning from 3+ years of experience in systems and network support to software development with a passion for clean code, scalable APIs, and automation. Proficient in troubleshooting network security and infrastructure management across Windows, OS, and Linux. Skilled in configuring and maintaining network equipment, optimizing connectivity, and ensuring seamless operations. Adept at resolving technical issues, supporting users, and enhancing IT troubleshooting with strong problem-solving and leadership abilities.</p>
+                    <a class="btn" id="hireme" href="https://linkedin.com/in/nirryyad">Hire Me</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h1 class="t-center my-2 t-white f-2">Skills</h1>
+        <div class="services-container flex s-around h-50">
+            <div class="skills-left flex s-center items-center">
+                <img src="{% static 'images/pro.png' %}" alt="">
+            </div>
+            <div class="skills-right flex items-center">
+                <div class="skillss-container">
+                    <div class="skillss-container">
+                <div class="python bar p-relative"><span class="bar-content left t-white">Python</span><span
+                        class="bar-content right-skills t-white">70%</span></div>
+                <div class="html bar p-relative"><span class="bar-content left t-white">HTML</span><span
+                        class="bar-content right-skills t-white">90%</span></div>
+                <div class="css bar p-relative"><span class="bar-content left t-white">CSS</span><span
+                        class="bar-content right-skills t-white">80%</span></div>
+                <div class="js bar p-relative"><span class="bar-content left t-white">JavaScript</span><span
+                        class="bar-content right-skills t-white">50%</span></div>
+    
+                <div class="mysql bar p-relative"><span class="bar-content left t-white">MySQL/PostgreSQL</span><span
+                        class="bar-content right-skills t-white">80%</span></div>        
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="Projects">
+        <h1 class="t-center my-2 t-white f-2">Projects</h1>
+
+
+
+        
+        <div class="projects-container flex s-center">
+             <div class="projects-item flex f-col s-center items-center">
+                <h1 class="t-white poppins">Basic Django CRM App</h1>
+                <p class="t-white poppins">Implemented a basic Django CRM application with mySQL.</p>
+<div>
+                <p class="t-tools poppins">Tools: Django, Python, MySQL, Bootstrap, HTML</p>
+                </div>
+                <div class="buttons flex s-around">
+                    <a href="https://github.com/nahidn4p/django-crm" target="_blank" class="btn mx-1 m-top">GitHub</a>
+                </div>
+            </div>
+
+            <div class="projects-item flex f-col s-center items-center">
+                <h1 class="t-white poppins">Django Portfolio</h1>
+                <p class="t-white poppins">Implemented a Django Portfolio application for myself with Sqlite database for Contact informations.</p>
+<div>
+                <p class="t-tools poppins">Tools: Django, Python, Sqlite, HTML , CSS, JS</p>
+                </div>
+                <div class="buttons flex s-around">
+                    <a href="https://github.com/nahidn4p/django-crm" target="_blank" class="btn mx-1 m-top">GitHub</a>
+                </div>
+            </div>
+
+            <div class="projects-item flex f-col s-center items-center">
+                <h1 class="t-white poppins">Bangla License Plate Recognition</h1>
+                <p class="t-white poppins">Built with Python and OpenCV, achieved 95% accuracy on 1,000+ images. Applied OCR techniques for Bangla script under varied lighting conditions.</p>
+                <div>
+                <p class="t-tools poppins">Tools: Python, OpenCV, Linux, Tensorflow, Pandas</p>
+                </div>
+                <div class="buttons flex s-around">
+                    <a href="https://www.youtube.com/watch?v=IfbLxEJ8lMg" target="_blank" class="btn m-top live">Demo</a>
+                </div>
+            </div>
+            <div class="projects-item flex f-col s-center items-center">
+                <h1 class="t-white poppins">Online Exam System</h1>
+                <p class="t-white poppins">Developed a Flask-based online examination system supporting 50+ users. Features include user authentication, quiz creation, scoring, and result tracking.</p>
+                <div>
+                <p class="t-tools poppins">Tools: Flask(Python), HTML/CSS, MySQL</p>
+                </div>
+                <div class="buttons flex s-around">
+                    <a href="https://github.com/nahidn4p" target="_blank" class="btn mx-1 m-top">GitHub</a>
+                    
+                </div>
+            </div>
+            <div class="projects-item flex f-col s-center items-center">
+                <h1 class="t-white poppins">Gender Recognition by Voice</h1>
+                <p class="t-white poppins">Developed a deep learning model to classify voices by gender with 90% accuracy. Collected and processed voice data from 2,000+ samples.</p>
+                <div>
+                <p class="t-tools poppins">Tools: Python, PyOpenXL,Numpy, Pandas, Scikit-learn</p>
+                </div>
+                <div class="buttons flex s-around">
+                    <a href="https://github.com/nahidn4p" target="_blank" class="btn mx-1 m-top">GitHub</a>
+                </div>
+            </div>
+            <div class="projects-item flex f-col s-center items-center">
+                <h1 class="t-white poppins">Simple REST API with FastAPI</h1>
+                <p class="t-white poppins">Created a CRUD API to manage user and task data with JWT-based authentication. Used MySQL as backend storage and deployed on a local Linux server.</p>
+                <div>
+                <p class="t-tools poppins">Tools: FastAPI, Python, MySQL, JWT</p>
+                </div>
+                <div class="buttons flex s-around">
+                    <a href="https://github.com/nahidn4p/FastApi-FreeCodecamp-Learning" target="_blank" class="btn mx-1 m-top">GitHub</a>
+                </div>
+            </div>
+            <div class="projects-item flex f-col s-center items-center">
+                <h1 class="t-white poppins">Oracle Cloud Always Free Auto-Launch Automation</h1>
+                <p class="t-white poppins">Implemented automated CI workflow using GitHub Actions that checks availability and launches
+instances via OCI CLI.</p>
+<div>
+                <p class="t-tools poppins">Tools: GitHub Actions, Shell, OCI CLI, Composer, PHP, Linux</p>
+                </div>
+                <div class="buttons flex s-around">
+                    <a href="https://github.com/nahidn4p/oci-arm-host-capacity" target="_blank" class="btn mx-1 m-top">GitHub</a>
+                </div>
+            </div>
+            <div class="projects-item flex f-col s-center items-center">
+                <h1 class="t-white poppins">VoIP Server</h1>
+                <p class="t-white poppins">Set up an internal VoIP communication system on a local network using open-source tools.</p>
+<div>
+                <p class="t-tools poppins">Tools: Asterisk, Linux, Networking Tools, Bash</p>
+                </div>
+                
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Certificate Section -->
+<section id="Certificates">
+  <h1 class="t-center my-2 t-white f-2">Certificates</h1>
+  <div class="cert-container flex wrap s-center gap-2">
+    <div class="cert-item flex f-col s-center items-center">
+      <h2 class="t-white poppins">Data Analysis With Python</h2>
+      <p class="t-white poppins">FreeCodeCamp</p>
+      <a href="https://www.freecodecamp.org/certification/nhriyad/data-analysis-with-python-v7" target="_blank">
+        <button class="btn m-top">View Certificate</button>
+      </a>
+    </div>
+    <div class="cert-item flex f-col s-center items-center">
+      <h2 class="t-white poppins">Python For Everybody</h2>
+      <p class="t-white poppins">Coursera</p>
+      <a href="https://coursera.org/share/dffd13b712e12984287e6005753eb3ea" target="_blank">
+        <button class="btn m-top">View Certificate</button>
+      </a>
+    </div>
+    <div class="cert-item flex f-col s-center items-center">
+      <h2 class="t-white poppins">Foundational C# - Microsoft/FreeCodeCamp</h2>
+      <p class="t-white poppins">FreeCodeCamp</p>
+      <a href="https://www.freecodecamp.org/certification/nhriyad/foundational-c-sharp-with-microsoft" target="_blank">
+        <button class="btn m-top">View Certificate</button>
+      </a>
+    </div>
+    <div class="cert-item flex f-col s-center items-center">
+      <h2 class="t-white poppins">Mikrotik Certification — MTCNA, MTCRE, MTCSE</h2>
+      <p class="t-white poppins">Mikrotik</p>
+    </div>
+  </div>
+</section>
+
+
+
+    <!-- Contact Me Section -->
+    <section id="Contact" class="m-b-1">
+        <h1 class="t-center my-2 t-white f-2">Contact Me</h1>
+        <div class="contact-container flex s-around items-centers">
+            <div class="form" id="contactForm">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="name form-div">
+                        <input type="text" name="name" id="name" class="poppins" placeholder="Enter Your Name">
+                    </div>
+                    <div class="email form-div">
+                        <input type="email" name="email" id="" class="poppins" placeholder="Enter Your Email" required>
+                    </div>
+                    <div class="phone form-div">
+                        <input type="phone" name="number" id="" class="poppins" placeholder="Enter Your Phone" required>
+                    </div>
+                    <div class="textarea form-div">
+                        <textarea name="content" id="textarea" cols="30" rows="10" class="poppins" placeholder="Enter Messages"></textarea>
+                    </div>
+                    <button type="submit" class="btn poppins" id="submit">Send</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer id="footer">
+        <ul class="flex s-center w-80 m-auto my-2 res">
+            <li><a href="#home" class="poppinss">Home</a></li>
+            <li><a href="#about" class="poppinss">About</a></li>
+            <li><a href="#skills" class="poppinss">Skills</a></li>
+            <li><a href="#Projects" class="poppinss">Projects</a></li>
+            <li><a href="#Certificates" class="poppinss">Certificates</a></li>
+            <li><a href="#home" class="poppinss">Portfolio</a></li>
+        </ul>
+        <ul class="flex s-center w-80 font-awesome">
+            <a href="https://linkedin.com/in/nhriyaad" target="_blank">
+                <li><i class="fa-brands fa-linkedin-in"></i></li>
+            </a>
+            <a href="https://github.com/nahidn4p" target="_blank">
+                <li><i class="fa-brands fa-github"></i></li>
+            </a>
+            <a href="https://tryhackme.com/p/nahid4p" target="_blank">
+                <li><i class="fas fa-shield"></i></li>
+            </a>
+        </ul>
+        <p class="t-center my-2 poppins">&copy; All Rights Reserved - <span class="cpy-white poppins">Nahid Hasan Riad</span></p>
+    </footer>
+</body>
+</html>
