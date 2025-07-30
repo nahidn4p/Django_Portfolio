@@ -1,43 +1,141 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description"
+        content="Nahid Hasan Riad's personal portfolio - Python Developer specializing in Django, FastAPI, and network automation.">
+    <meta name="keywords"
+        content="Python Developer, Django, FastAPI, Nahid Hasan Riad, Portfolio, Web Developer, Networking, Cloud, DevOps">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nahid's Portfolio</title>
     <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.png' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        /* Base navbar styles */
+        #navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1f1f38;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        #navbar h2 {
+            color: white;
+        }
+
+        /* Nav links */
+        .right-nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .right-nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-family: 'Ubuntu', sans-serif;
+            font-weight: 600;
+        }
+
+        /* Hamburger button - hidden on desktop */
+        .hamburger-btn {
+            display: none;
+            font-size: 2.5rem;
+            color: white;
+            cursor: pointer;
+            user-select: none;
+            z-index: 2000;
+        }
+
+        /* Mobile styles */
+        @media (max-width: 768px) {
+
+            /* Show hamburger */
+            .hamburger-btn {
+                display: block;
+            }
+
+            /* Hide nav links by default */
+            .right-nav ul {
+                display: none;
+                flex-direction: column;
+                background-color: #1f1f38;
+                position: absolute;
+                top: 60px;
+                /* height of navbar */
+                right: 0;
+                width: 100%;
+                padding: 1rem 0;
+                margin: 0;
+                border-radius: 0 0 8px 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            }
+
+            .right-nav ul li {
+                padding: 0.5rem 1rem;
+                text-align: center;
+            }
+
+            .right-nav ul li a {
+                display: block;
+                font-size: 1.1rem;
+            }
+
+            /* When checkbox checked, show menu */
+            #nav-toggle:checked+.hamburger-btn+.right-nav ul {
+                display: flex;
+            }
+        }
+
+        /* Hide checkbox */
+        #nav-toggle {
+            display: none;
+        }
+    </style>
+
 </head>
+
 <body>
     <!-- Navbar Section -->
     <nav id="navbar" class="flex s-around bg-color">
         <div class="left-nav">
             <h2 class="t-white">Portfolio</h2>
         </div>
+        <input type="checkbox" id="nav-toggle" hidden>
+        <label for="nav-toggle" class="hamburger-btn">&#9776;</label>
+
         <div class="right-nav">
             <ul class="flex">
                 <li><a href="#home" class="t-white roboto">Home <i class="fa-solid fa-house"></i></a></li>
                 <li><a href="#about" class="t-white roboto">About Me <i class="fa-solid fa-user"></i></a></li>
                 <li><a href="#skills" class="t-white roboto">Skills <i class="fa-solid fa-code"></i></a></li>
                 <li><a href="#Projects" class="t-white roboto">Projects <i class="fas fa-project-diagram"></i></a></li>
-                <li><a href="#Certificates" class="t-white roboto">Certificates <i class="fa-solid fa-medal"></i></a></li>
+                <li><a href="#Certificates" class="t-white roboto">Certificates <i class="fa-solid fa-medal"></i></a>
+                </li>
                 <li><a href="#Contact" class="t-white roboto">Contact <i class="fa-solid fa-rocket"></i></a></li>
-            </ ogl>
+            </ul>
         </div>
     </nav>
 
     <!-- Django Messages -->
     {% if messages %}
-        <div class="messages">
-            {% for message in messages %}
-                <div class="alert success">
-                    {{ message }}
-                </div>
-            {% endfor %}
+    <div class="messages">
+        {% for message in messages %}
+        <div class="alert success">
+            {{ message }}
         </div>
-        <script>
+        {% endfor %}
+    </div>
+    <script>
         // Auto-hide after 5 seconds
         setTimeout(function () {
             const alerts = document.querySelectorAll('.alert');
@@ -47,7 +145,7 @@
                 setTimeout(() => alert.remove(), 500); // Fully remove after fade out
             });
         }, 5000); // 5000ms = 5 seconds
-        </script>
+    </script>
     {% endif %}
 
     <!-- Home Section -->
@@ -57,9 +155,10 @@
                 <h6 class="poppinss">Hi, I'm</h6>
                 <h1 class="t-white">Nahid Hasan Riad</h1>
                 <h4 class="poppinss">Python Developer</h4>
-                <a href="{% static 'pdf/Nahid_Hasan_Riad_Resume.pdf' %}" target="_blank">
+                <a href="{% static 'pdf/Nahid_Hasan_Riad_Resume.pdf' %}" download target="_blank">
                     <button class="btn poppins">Resume</button></a>
-                <a class="btn live poppins" id="hireme" href="https://linkedin.com/in/nhriyaad" target="_blank">Let's Talk</a>
+                <a class="btn live poppins" id="hireme" href="https://linkedin.com/in/nhriyaad" target="_blank">Let's
+                    Talk</a>
             </div>
         </div>
         <div class="home-right flex s-center items-center">
@@ -79,52 +178,139 @@
             <div class="about-right flex">
                 <div class="about-content">
                     <!-- <h1 class="t-white m-b-1 poppins">Nahid Hasan Riad</h1> -->
-                    <p class="t-white poppins">Aspiring Python Developer with a background in IT support and a strong foundation in backend development using Django, FastAPI, and MySQL. Transitioning from 3+ years of experience in systems and network support to software development with a passion for clean code, scalable APIs, and automation. Proficient in troubleshooting network security and infrastructure management across Windows, OS, and Linux. Skilled in configuring and maintaining network equipment, optimizing connectivity, and ensuring seamless operations. Adept at resolving technical issues, supporting users, and enhancing IT troubleshooting with strong problem-solving and leadership abilities.</p>
+                    <p class="t-white poppins">Aspiring Python Developer with a background in IT support and a strong
+                        foundation in backend development using Django, FastAPI, and MySQL. Transitioning from 3+ years
+                        of experience in systems and network support to software development with a passion for clean
+                        code, scalable APIs, and automation. Proficient in troubleshooting network security and
+                        infrastructure management across Windows, OS, and Linux. Skilled in configuring and maintaining
+                        network equipment, optimizing connectivity, and ensuring seamless operations. Adept at resolving
+                        technical issues, supporting users, and enhancing IT troubleshooting with strong problem-solving
+                        and leadership abilities.</p>
                     <a class="btn" id="hireme" href="https://linkedin.com/in/nirryyad">Hire Me</a>
                 </div>
             </div>
         </div>
     </section>
 
-<!-- Skills Section -->
-<section id="skills">
-    <h1 class="t-center my-2 t-white f-2">Skills</h1>
-    <div class="services-container flex s-around h-100">
-        <div class="skills-left flex s-center items-center">
-            <img src="{% static 'images/pro.png' %}" alt="">
-        </div>
-        <div class="skills-right flex items-center">
-            <div class="skillss-container">
-                <div class="python bar p-relative"><span class="bar-content left t-white">Python</span><span class="bar-content right-skills t-white">70%</span></div>
-                <div class="bash bar p-relative"><span class="bar-content left t-white">Bash</span><span class="bar-content right-skills t-white">60%</span></div>
-                <div class="html bar p-relative"><span class="bar-content left t-white">HTML</span><span class="bar-content right-skills t-white">90%</span></div>
-                <div class="css bar p-relative"><span class="bar-content left t-white">CSS</span><span class="bar-content right-skills t-white">80%</span></div>
-                <div class="js bar p-relative"><span class="bar-content left t-white">JavaScript</span><span class="bar-content right-skills t-white">50%</span></div>
-                <div class="mysql bar p-relative"><span class="bar-content left t-white">MySQL/PostgreSQL/SQLite</span><span class="bar-content right-skills t-white">80%</span></div>
-                <div class="linux bar p-relative"><span class="bar-content left t-white">Linux (Ubuntu, Kali, Debian)</span><span class="bar-content right-skills t-white">85%</span></div>
-                <div class="network bar p-relative"><span class="bar-content left t-white">Networking (TCP/IP, VPN, HTTP/HTTPS)</span><span class="bar-content right-skills t-white">75%</span></div>
-                <div class="docker bar p-relative"><span class="bar-content left t-white">Docker</span><span class="bar-content right-skills t-white">60%</span></div>
-                <div class="k8s bar p-relative"><span class="bar-content left t-white">Kubernetes (Basic)</span><span class="bar-content right-skills t-white">30%</span></div>
-                <div class="aws bar p-relative"><span class="bar-content left t-white">AWS (Basic)</span><span class="bar-content right-skills t-white">40%</span></div>
-                <div class="oracle bar p-relative"><span class="bar-content left t-white">Oracle Cloud</span><span class="bar-content right-skills t-white">50%</span></div>
-                <div class="iac bar p-relative"><span class="bar-content left t-white">Ansible/Terraform (Learning)</span><span class="bar-content right-skills t-white">30%</span></div>
-                <div class="git bar p-relative"><span class="bar-content left t-white">Git & GitHub</span><span class="bar-content right-skills t-white">75%</span></div>
-                <div class="tools bar p-relative"><span class="bar-content left t-white">VSCode, Ticketing Tools</span><span class="bar-content right-skills t-white">70%</span></div>
-                <div class="monitoring bar p-relative"><span class="bar-content left t-white">Grafana / Prometheus</span><span class="bar-content right-skills t-white">35%</span></div>
+    <!-- Skills Section -->
+    <section id="skills">
+        <h1 class="t-center my-2 t-white f-2">Skills</h1>
+        <div class="services-container flex s-around h-100">
+            <div class="skills-left flex s-center items-center">
+                <img src="{% static 'images/pro.png' %}" alt="">
+            </div>
+            <div class="skills-right flex items-center">
+                <div class="skillss-container">
+                    <div class="python bar p-relative">
+                        <span class=" left t-white">Python</span>
+                        <div class="bar-fill python"></div>
+                        <span class="bar-content right-skills t-white">70%</span>
+                    </div>
+
+                    <div class="bash bar p-relative">
+                        <span class="bar-content left t-white">Bash</span>
+                        <div class="bar-fill bash"></div>
+                        <span class="bar-content right-skills t-white">60%</span>
+                    </div>
+
+                    <div class="html bar p-relative">
+                        <span class="bar-content left t-white">HTML</span>
+                        <div class="bar-fill html"></div>
+                        <span class="bar-content right-skills t-white">90%</span>
+                    </div>
+
+                    <div class="css bar p-relative">
+                        <span class="bar-content left t-white">CSS</span>
+                        <div class="bar-fill css"></div>
+                        <span class="bar-content right-skills t-white">80%</span>
+                    </div>
+
+                    <div class="js bar p-relative">
+                        <span class="bar-content left t-white">JavaScript</span>
+                        <div class="bar-fill js"></div>
+                        <span class="bar-content right-skills t-white">50%</span>
+                    </div>
+
+                    <div class="mysql bar p-relative">
+                        <span class="bar-content left t-white">MySQL/PostgreSQL/SQLite</span>
+                        <div class="bar-fill mysql"></div>
+                        <span class="bar-content right-skills t-white">80%</span>
+                    </div>
+
+                    <div class="linux bar p-relative">
+                        <span class="bar-content left t-white">Linux (Ubuntu, Kali, Debian)</span>
+                        <div class="bar-fill linux"></div>
+                        <span class="bar-content right-skills t-white">85%</span>
+                    </div>
+
+                    <div class="network bar p-relative">
+                        <span class="bar-content left t-white">Networking (TCP/IP, VPN, HTTP/HTTPS)</span>
+                        <div class="bar-fill network"></div>
+                        <span class="bar-content right-skills t-white">75%</span>
+                    </div>
+
+                    <div class="docker bar p-relative">
+                        <span class="bar-content left t-white">Docker</span>
+                        <div class="bar-fill docker"></div>
+                        <span class="bar-content right-skills t-white">60%</span>
+                    </div>
+
+                    <div class="k8s bar p-relative">
+                        <span class="bar-content left t-white">Kubernetes (Basic)</span>
+                        <div class="bar-fill k8s"></div>
+                        <span class="bar-content right-skills t-white">30%</span>
+                    </div>
+
+                    <div class="aws bar p-relative">
+                        <span class="bar-content left t-white">AWS (Basic)</span>
+                        <div class="bar-fill aws"></div>
+                        <span class="bar-content right-skills t-white">40%</span>
+                    </div>
+
+                    <div class="oracle bar p-relative">
+                        <span class="bar-content left t-white">Oracle Cloud</span>
+                        <div class="bar-fill oracle"></div>
+                        <span class="bar-content right-skills t-white">50%</span>
+                    </div>
+
+                    <div class="iac bar p-relative">
+                        <span class="bar-content left t-white">Ansible/Terraform (Learning)</span>
+                        <div class="bar-fill iac"></div>
+                        <span class="bar-content right-skills t-white">30%</span>
+                    </div>
+
+                    <div class="git bar p-relative">
+                        <span class="bar-content left t-white">Git & GitHub</span>
+                        <div class="bar-fill git"></div>
+                        <span class="bar-content right-skills t-white">75%</span>
+                    </div>
+
+                    <div class="tools bar p-relative">
+                        <span class="bar-content left t-white">VSCode, Ticketing Tools</span>
+                        <div class="bar-fill tools"></div>
+                        <span class="bar-content right-skills t-white">70%</span>
+                    </div>
+
+                    <div class="monitoring bar p-relative">
+                        <span class="bar-content left t-white">Grafana / Prometheus</span>
+                        <div class="bar-fill monitoring"></div>
+                        <span class="bar-content right-skills t-white">35%</span>
+                    </div>
+                </div>
+
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- Projects Section -->
     <section id="Projects">
         <h1 class="t-center my-2 t-white f-2">Projects</h1>
         <div class="projects-container flex s-center">
-             <div class="projects-item flex f-col s-center items-center">
+            <div class="projects-item flex f-col s-center items-center">
                 <h1 class="t-white poppins">Basic Django CRM App</h1>
                 <p class="t-white poppins">Implemented a basic Django CRM application with mySQL.</p>
-<div>
-                <p class="t-tools poppins">Tools: Django, Python, MySQL, Bootstrap, HTML</p>
+                <div>
+                    <p class="t-tools poppins">Tools: Django, Python, MySQL, Bootstrap, HTML</p>
                 </div>
                 <div class="buttons flex s-around">
                     <a href="https://github.com/nahidn4p/django-crm" target="_blank" class="btn mx-1 m-top">GitHub</a>
@@ -133,23 +319,26 @@
 
             <div class="projects-item flex f-col s-center items-center">
                 <h1 class="t-white poppins">Django Portfolio</h1>
-                <p class="t-white poppins">Implemented a Django Portfolio application for myself with Sqlite database for Contact informations.</p>
-<div>
-                <p class="t-tools poppins">Tools: Django, Python, Sqlite, HTML , CSS, JS</p>
+                <p class="t-white poppins">Implemented a Django Portfolio application for myself with Sqlite database
+                    for Contact informations.</p>
+                <div>
+                    <p class="t-tools poppins">Tools: Django, Python, Sqlite, HTML , CSS, JS</p>
                 </div>
                 <div class="buttons flex s-around">
-                    <a href="https://github.com/nahidn4p/Django_Portfolio" target="_blank" class="btn mx-1 m-top">GitHub</a>
+                    <a href="https://github.com/nahidn4p/Django_Portfolio" target="_blank"
+                        class="btn mx-1 m-top">GitHub</a>
                 </div>
             </div>
 
             <div class="projects-item flex f-col s-center items-center">
                 <h1 class="t-white poppins">Django Fullstack Note App</h1>
                 <p class="t-white poppins">Implemented a Django Full Stack Note Application</p>
-            <div>
-                <p class="t-tools poppins">Tools: Django, Python, HTML , CSS, JS</p>
+                <div>
+                    <p class="t-tools poppins">Tools: Django, Python, HTML , CSS, JS</p>
                 </div>
                 <div class="buttons flex s-around">
-                    <a href="https://github.com/nahidn4p/Django-fullstack-note-app" target="_blank" class="btn mx-1 m-top">GitHub</a>
+                    <a href="https://github.com/nahidn4p/Django-fullstack-note-app" target="_blank"
+                        class="btn mx-1 m-top">GitHub</a>
                 </div>
             </div>
 
@@ -157,30 +346,34 @@
 
             <div class="projects-item flex f-col s-center items-center">
                 <h1 class="t-white poppins">Bangla License Plate Recognition</h1>
-                <p class="t-white poppins">Built with Python and OpenCV, achieved 95% accuracy on 1,000+ images. Applied OCR techniques for Bangla script under varied lighting conditions.</p>
+                <p class="t-white poppins">Built with Python and OpenCV, achieved 95% accuracy on 1,000+ images. Applied
+                    OCR techniques for Bangla script under varied lighting conditions.</p>
                 <div>
-                <p class="t-tools poppins">Tools: Python, OpenCV, Linux, Tensorflow, Pandas</p>
+                    <p class="t-tools poppins">Tools: Python, OpenCV, Linux, Tensorflow, Pandas</p>
                 </div>
                 <div class="buttons flex s-around">
-                    <a href="https://www.youtube.com/watch?v=IfbLxEJ8lMg" target="_blank" class="btn m-top live">Demo</a>
+                    <a href="https://www.youtube.com/watch?v=IfbLxEJ8lMg" target="_blank"
+                        class="btn m-top live">Demo</a>
                 </div>
             </div>
             <div class="projects-item flex f-col s-center items-center">
                 <h1 class="t-white poppins">Online Exam System</h1>
-                <p class="t-white poppins">Developed a Flask-based online examination system supporting 50+ users. Features include user authentication, quiz creation, scoring, and result tracking.</p>
+                <p class="t-white poppins">Developed a Flask-based online examination system supporting 50+ users.
+                    Features include user authentication, quiz creation, scoring, and result tracking.</p>
                 <div>
-                <p class="t-tools poppins">Tools: Flask(Python), HTML/CSS, MySQL</p>
+                    <p class="t-tools poppins">Tools: Flask(Python), HTML/CSS, MySQL</p>
                 </div>
                 <div class="buttons flex s-around">
                     <a href="https://github.com/nahidn4p" target="_blank" class="btn mx-1 m-top">GitHub</a>
-                    
+
                 </div>
             </div>
             <div class="projects-item flex f-col s-center items-center">
                 <h1 class="t-white poppins">Gender Recognition by Voice</h1>
-                <p class="t-white poppins">Developed a deep learning model to classify voices by gender with 90% accuracy. Collected and processed voice data from 2,000+ samples.</p>
+                <p class="t-white poppins">Developed a deep learning model to classify voices by gender with 90%
+                    accuracy. Collected and processed voice data from 2,000+ samples.</p>
                 <div>
-                <p class="t-tools poppins">Tools: Python, PyOpenXL,Numpy, Pandas, Scikit-learn</p>
+                    <p class="t-tools poppins">Tools: Python, PyOpenXL,Numpy, Pandas, Scikit-learn</p>
                 </div>
                 <div class="buttons flex s-around">
                     <a href="https://github.com/nahidn4p" target="_blank" class="btn mx-1 m-top">GitHub</a>
@@ -188,68 +381,75 @@
             </div>
             <div class="projects-item flex f-col s-center items-center">
                 <h1 class="t-white poppins">Simple REST API with FastAPI</h1>
-                <p class="t-white poppins">Created a CRUD API to manage user and task data with JWT-based authentication. Used MySQL as backend storage and deployed on a local Linux server.</p>
+                <p class="t-white poppins">Created a CRUD API to manage user and task data with JWT-based
+                    authentication. Used MySQL as backend storage and deployed on a local Linux server.</p>
                 <div>
-                <p class="t-tools poppins">Tools: FastAPI, Python, MySQL, JWT</p>
+                    <p class="t-tools poppins">Tools: FastAPI, Python, MySQL, JWT</p>
                 </div>
                 <div class="buttons flex s-around">
-                    <a href="https://github.com/nahidn4p/FastApi-FreeCodecamp-Learning" target="_blank" class="btn mx-1 m-top">GitHub</a>
+                    <a href="https://github.com/nahidn4p/FastApi-FreeCodecamp-Learning" target="_blank"
+                        class="btn mx-1 m-top">GitHub</a>
                 </div>
             </div>
             <div class="projects-item flex f-col s-center items-center">
                 <h1 class="t-white poppins">Oracle Cloud Always Free Auto-Launch Automation</h1>
-                <p class="t-white poppins">Implemented automated CI workflow using GitHub Actions that checks availability and launches
-instances via OCI CLI.</p>
-<div>
-                <p class="t-tools poppins">Tools: GitHub Actions, Shell, OCI CLI, Composer, PHP, Linux</p>
+                <p class="t-white poppins">Implemented automated CI workflow using GitHub Actions that checks
+                    availability and launches
+                    instances via OCI CLI.</p>
+                <div>
+                    <p class="t-tools poppins">Tools: GitHub Actions, Shell, OCI CLI, Composer, PHP, Linux</p>
                 </div>
                 <div class="buttons flex s-around">
-                    <a href="https://github.com/nahidn4p/oci-arm-host-capacity" target="_blank" class="btn mx-1 m-top">GitHub</a>
+                    <a href="https://github.com/nahidn4p/oci-arm-host-capacity" target="_blank"
+                        class="btn mx-1 m-top">GitHub</a>
                 </div>
             </div>
             <div class="projects-item flex f-col s-center items-center">
                 <h1 class="t-white poppins">VoIP Server</h1>
-                <p class="t-white poppins">Set up an internal VoIP communication system on a local network using open-source tools.</p>
-<div>
-                <p class="t-tools poppins">Tools: Asterisk, Linux, Networking Tools, Bash</p>
+                <p class="t-white poppins">Set up an internal VoIP communication system on a local network using
+                    open-source tools.</p>
+                <div>
+                    <p class="t-tools poppins">Tools: Asterisk, Linux, Networking Tools, Bash</p>
                 </div>
-                
+
             </div>
 
         </div>
     </section>
 
     <!-- Certificate Section -->
-<section id="Certificates">
-  <h1 class="t-center my-2 t-white f-2">Certificates</h1>
-  <div class="cert-container flex wrap s-center gap-2">
-    <div class="cert-item flex f-col s-center items-center">
-      <h2 class="t-white poppins">Data Analysis With Python</h2>
-      <p class="t-white poppins">FreeCodeCamp</p>
-      <a href="https://www.freecodecamp.org/certification/nhriyad/data-analysis-with-python-v7" target="_blank">
-        <button class="btn m-top">View Certificate</button>
-      </a>
-    </div>
-    <div class="cert-item flex f-col s-center items-center">
-      <h2 class="t-white poppins">Python For Everybody</h2>
-      <p class="t-white poppins">Coursera</p>
-      <a href="https://coursera.org/share/dffd13b712e12984287e6005753eb3ea" target="_blank">
-        <button class="btn m-top">View Certificate</button>
-      </a>
-    </div>
-    <div class="cert-item flex f-col s-center items-center">
-      <h2 class="t-white poppins">Foundational C# - Microsoft/FreeCodeCamp</h2>
-      <p class="t-white poppins">FreeCodeCamp</p>
-      <a href="https://www.freecodecamp.org/certification/nhriyad/foundational-c-sharp-with-microsoft" target="_blank">
-        <button class="btn m-top">View Certificate</button>
-      </a>
-    </div>
-    <div class="cert-item flex f-col s-center items-center">
-      <h2 class="t-white poppins">Mikrotik Certification — MTCNA, MTCRE, MTCSE</h2>
-      <p class="t-white poppins">Mikrotik</p>
-    </div>
-  </div>
-</section>
+    <section id="Certificates">
+        <h1 class="t-center my-2 t-white f-2">Certificates</h1>
+        <div class="cert-container flex wrap s-center gap-2">
+            <div class="cert-item flex f-col s-center items-center">
+                <h2 class="t-white poppins">Data Analysis With Python</h2>
+                <p class="t-white poppins">FreeCodeCamp</p>
+                <a href="https://www.freecodecamp.org/certification/nhriyad/data-analysis-with-python-v7"
+                    target="_blank">
+                    <button class="btn m-top">View Certificate</button>
+                </a>
+            </div>
+            <div class="cert-item flex f-col s-center items-center">
+                <h2 class="t-white poppins">Python For Everybody</h2>
+                <p class="t-white poppins">Coursera</p>
+                <a href="https://coursera.org/share/dffd13b712e12984287e6005753eb3ea" target="_blank">
+                    <button class="btn m-top">View Certificate</button>
+                </a>
+            </div>
+            <div class="cert-item flex f-col s-center items-center">
+                <h2 class="t-white poppins">Foundational C# - Microsoft/FreeCodeCamp</h2>
+                <p class="t-white poppins">FreeCodeCamp</p>
+                <a href="https://www.freecodecamp.org/certification/nhriyad/foundational-c-sharp-with-microsoft"
+                    target="_blank">
+                    <button class="btn m-top">View Certificate</button>
+                </a>
+            </div>
+            <div class="cert-item flex f-col s-center items-center">
+                <h2 class="t-white poppins">Mikrotik Certification — MTCNA, MTCRE, MTCSE</h2>
+                <p class="t-white poppins">Mikrotik</p>
+            </div>
+        </div>
+    </section>
 
 
 
@@ -270,7 +470,8 @@ instances via OCI CLI.</p>
                         <input type="phone" name="number" id="" class="poppins" placeholder="Enter Your Phone" required>
                     </div>
                     <div class="textarea form-div">
-                        <textarea name="content" id="textarea" cols="30" rows="10" class="poppins" placeholder="Enter Messages"></textarea>
+                        <textarea name="content" id="textarea" cols="30" rows="10" class="poppins"
+                            placeholder="Enter Messages"></textarea>
                     </div>
                     <button type="submit" class="btn poppins" id="submit">Send</button>
                 </form>
@@ -299,7 +500,16 @@ instances via OCI CLI.</p>
                 <li><i class="fas fa-shield"></i></li>
             </a>
         </ul>
-        <p class="t-center my-2 poppins">&copy; All Rights Reserved - <span class="cpy-white poppins">Nahid Hasan Riad</span></p>
+        <p class="t-center my-2 poppins">&copy; All Rights Reserved - <span class="cpy-white poppins">Nahid Hasan
+                Riad</span></p>
     </footer>
+    <script>
+  document.querySelectorAll('.right-nav ul li a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.getElementById('nav-toggle').checked = false;
+    });
+  });
+</script>
 </body>
+
 </html>
