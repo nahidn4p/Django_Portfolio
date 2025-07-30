@@ -16,6 +16,26 @@ body {
 
 /* General responsive improvements */
 @media (max-width: 480px) {
+    #footer {
+        padding: 1rem 0.5rem;
+    }
+
+    #footer ul.w-80 {
+        width: 100%;
+    }
+
+    #footer ul li a {
+        font-size: clamp(0.8rem, 3.5vw, 0.9rem);
+    }
+
+    .font-awesome li i {
+        padding: 0.4rem;
+        font-size: clamp(0.9rem, 3.5vw, 1rem);
+    }
+
+    #footer p {
+        font-size: clamp(0.6rem, 3vw, 0.7rem);
+    }
     body {
         font-size: 14px;
     }
