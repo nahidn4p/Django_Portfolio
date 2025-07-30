@@ -16,6 +16,34 @@ body {
     scroll-behavior: smooth;
 }
 
+.skillss-container.two-columns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem 2rem; /* row gap and column gap */
+  width: 100%;
+}
+
+/* Optional: make sure each skill bar stretches to full column width */
+.skillss-container.two-columns .bar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2c2c6c;
+  border-radius: 12px;
+  padding: 0.4rem 1rem;
+}
+
+/* Style bar-content left and right-skills properly */
+.bar-content.left {
+  font-weight: 600;
+}
+
+.bar-content.right-skills {
+  font-weight: 600;
+}
+
+
 #navbar {
     line-height: 4rem;
     position: sticky;
@@ -167,6 +195,11 @@ body {
 .about-content p {
     margin-bottom: 2rem;
 }
+.skillss-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
 
 
 /* Skills */
@@ -246,21 +279,46 @@ body {
 }
 
 .bar {
-    margin: 2rem 0;
+    height: 30px; /* Increased height for better visibility */
+    margin-bottom: 15px; /* Added spacing between bars */
+    background-color: #333;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
 }
+
 
 .bar-content {
     position: absolute;
-    bottom: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
 }
 
 .left {
-    left: 0;
+    left: 10px;
 }
 
 .right-skills {
-    right: 0;
+    right: 10px;
 }
+
+.python { width: 70%; background-color: #8e44ad; }
+.bash { width: 60%; background-color: #e74c3c; }
+.html { width: 90%; background-color: #e67e22; }
+.css { width: 80%; background-color: #3498db; }
+.js { width: 50%; background-color: #f1c40f; }
+.mysql { width: 80%; background-color: #2ecc71; }
+.linux { width: 85%; background-color: #1abc9c; }
+.network { width: 75%; background-color: #9b59b6; }
+.docker { width: 60%; background-color: #34495e; }
+.k8s { width: 30%; background-color: #16a085; }
+.aws { width: 40%; background-color: #27ae60; }
+.oracle { width: 50%; background-color: #2980b9; }
+.iac { width: 30%; background-color: #8e44ad; }
+.git { width: 75%; background-color: #d35400; }
+.tools { width: 70%; background-color: #c0392b; }
+.monitoring { width: 35%; background-color: #7f8c8d; }
 
 
 
