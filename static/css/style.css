@@ -39,15 +39,20 @@ body {
     body {
         font-size: 14px;
     }
-    
+
     .f-2 {
         font-size: 1.5rem;
     }
-    
+
     .btn {
         font-size: 0.9rem;
         padding: 0.6rem 1rem;
     }
+}
+
+.right-nav {
+    display: flex;
+    justify-content: flex-start; /* Default alignment for nav items */
 }
 
 .skillss-container.two-columns {
@@ -98,9 +103,14 @@ body {
 }
 
 #navbar ul li a {
+    display: flex;
+    align-items: center;
     text-decoration: none;
     padding: 0.5rem 0.9rem;
+}
 
+#navbar ul li a i {
+    margin-left: 0.5rem;  /* Adds space between text and icon */
 }
 
 .right {
@@ -251,23 +261,23 @@ body {
     #about {
         padding: 1rem;
     }
-    
+
     .about-container {
         flex-direction: column;
         text-align: center;
     }
-    
+
     .about-left,
     .about-right {
         flex: 1 1 100%;
         width: 100%;
     }
-    
+
     .about-right {
         padding-right: 0;
         padding: 1rem;
     }
-    
+
     .about-left img {
         max-width: 300px;
     }
@@ -320,22 +330,22 @@ body {
     #skills {
         padding: 1rem;
     }
-    
+
     .services-container {
         flex-direction: column;
         text-align: center;
     }
-    
+
     .skills-left,
     .skills-right {
         flex: 1 1 100%;
         width: 100%;
     }
-    
+
     .skills-left img {
         max-width: 300px;
     }
-    
+
     .skillss-container {
         max-width: 100%;
         padding: 0 1rem;
@@ -482,13 +492,55 @@ body {
     #Projects {
         padding: 1rem;
     }
-    
+
     .projects-container {
         flex-direction: column;
         align-items: center;
     }
-    
+
     .projects-item {
+        width: 100%;
+        max-width: 350px;
+        margin: 0.5rem 0;
+    }
+}
+
+
+
+/* Education Section */
+#Education {
+    padding: 2rem;
+}
+
+.edu-item {
+    background-color: #0f8ed8;
+    border-radius: 1.5rem;
+    padding: 2rem 1rem;
+    width: 20rem;
+    max-width: 100%;
+    margin: 1rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+.edu-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+}
+/* Certificates Section Responsive */
+@media (max-width: 768px) {
+    #Education {
+        padding: 1rem;
+    }
+
+    .edu-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .edu-item {
         width: 100%;
         max-width: 350px;
         margin: 0.5rem 0;
@@ -525,12 +577,12 @@ body {
     #Certificates {
         padding: 1rem;
     }
-    
+
     .cert-container {
         flex-direction: column;
         align-items: center;
     }
-    
+
     .cert-item {
         width: 100%;
         max-width: 350px;
@@ -575,12 +627,12 @@ textarea {
     #Contact {
         padding: 1rem;
     }
-    
+
     .form {
         width: 95%;
         padding: 0 1rem;
     }
-    
+
     .form-div input,
     textarea {
         font-size: 1rem;
